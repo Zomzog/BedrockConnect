@@ -75,7 +75,9 @@ jobs:
         run: |
           echo "PONY"
           ls .
+          echo "PONY2"
           ls ./serverlist-server
+          echo "PONY3"
           ls ./serverlist-server/target/
       - name: Build and push
         id: build
