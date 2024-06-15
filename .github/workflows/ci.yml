@@ -73,6 +73,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: debug
         run: |
+          echo "PONY"
           ls .
           ls ./serverlist-server
           ls ./serverlist-server/target/
