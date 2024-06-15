@@ -75,7 +75,7 @@ jobs:
         run: |
           echo "PONY"
           ls .
-          echo "PONY2"
+          echo "PONY"
           ls ./serverlist-server
           echo "PONY3"
           ls ./serverlist-server/target/
@@ -83,7 +83,7 @@ jobs:
         id: build
         uses: docker/build-push-action@v5
         with:
-          context: docker/bedrockconnect
+          context: serverlist-server
           push: true
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
