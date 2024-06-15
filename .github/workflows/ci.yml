@@ -71,6 +71,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: debug
+        run: |
+          ls .
+          ls ./serverlist-server
+          ls ./serverlist-server/target/
       - name: Build and push
         id: build
         uses: docker/build-push-action@v5
