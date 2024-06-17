@@ -21,7 +21,7 @@ jobs:
       - name: Build with maven
         run: |
           cd serverlist-server
-          mvn -B package --file pom.xml
+          mvn -B package
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
