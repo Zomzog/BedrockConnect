@@ -166,9 +166,6 @@ jobs:
     needs:
       - release
       - docker
-    env:
-      NEW_RELEASE: ${{ needs.release.outputs.NEW_RELEASE }}
-      RELEASE_VERSION: ${{ needs.release.outputs.RELEASE_VERSION }}
     steps:
       - name: Download digests
         uses: actions/download-artifact@v4
@@ -181,11 +178,11 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Update docker version
-        if: env.NEW_RELEASE == 'True'
-        run: echo "${{ env.RELEASE_VERSION }} >> DOCKER_VERSION"
+        if: ${{ needs.release.outputs.NEW_RELEASE }} == 'True'
+        run: echo "${{ needs.release.outputs.RELEASE_VERSION }} >> DOCKER_VERSION"
 
       - name: Update docker version dev
-        if: env.NEW_RELEASE == 'False'
+        if: ${{ needs.release.outputs.NEW_RELEASE }} == 'False'
         run: echo "dev >> DOCKER_VERSION"
 
       - name: Docker meta
