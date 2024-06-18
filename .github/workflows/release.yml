@@ -18,7 +18,7 @@ jobs:
       NEW_RELEASE: ${{ steps.setEnvs.outputs.NEW_RELEASE }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set Env
       id: setEnvs
@@ -28,9 +28,9 @@ jobs:
         echo ::set-env name=RELEASE_VERSION::$(echo $(python .github/assets/versionUp.py))
         echo ::set-env name=MINECRAFT_VERSION::$(echo $(cat .github/assets/supportedVersion))
         echo ::set-env name=NEW_RELEASE::$(echo $(python .github/assets/pattern_check.py "${{ github.event.head_commit.message }}"))
-        echo ${{ env.RELEASE_VERSION }} >> $GITHUB_OUTPUT
-        echo ${{ env.MINECRAFT_VERSION }} >> $GITHUB_OUTPUT
-        echo ${{ env.NEW_RELEASE }} >> $GITHUB_OUTPUT
+        echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}" >> $GITHUB_OUTPUT
+        echo "MINECRAFT_VERSION=${{ env.MINECRAFT_VERSION }}" >> $GITHUB_OUTPUT
+        echo "NEW_RELEASE=${{ env.NEW_RELEASE }}" >> $GITHUB_OUTPUT
 
     - name: Set up OpenJDK
       uses: actions/setup-java@v2
