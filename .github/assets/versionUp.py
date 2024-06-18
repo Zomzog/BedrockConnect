@@ -3,7 +3,7 @@ import urllib.request as request
 import json
 
 # fetch newest version
-req = request.Request("https://api.github.com/repos/Pugmatt/BedrockConnect/releases/latest")
+req = request.Request("https://api.github.com/repos/Zomzog/BedrockConnect/releases/latest")
 req.add_header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:104.0) Gecko/20100101 Firefox/104.0") # avoid 403 erros
 req = json.loads(request.urlopen(req).read().decode("utf-8"))
 
